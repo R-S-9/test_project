@@ -1,0 +1,128 @@
+.header{
+    width: 100%;
+    height: 100%;
+    padding-bottom: 16px;
+    padding-top: 16px;
+    text-align: center;
+    background: linear-gradient(to top, rgb(31, 54, 31), rgb(46, 66, 46));
+    box-shadow: 0 7px 5px -5px rgba(0, 0, 0, 1);
+}
+
+body {
+    color: white;
+    background: linear-gradient(to right, #1f1f1f, #2f432f, #1f1f1f);
+    font-family: Georgia;
+}
+
+* {
+    padding:0;
+    margin:0;
+}
+
+h1{
+    color: #ffee00;
+    font: 40px Georgia;
+}
+
+.descript{
+    width: 300px;  - ширина
+    color: #ffee00;  - цвет
+    font-style: italic;  - курсив
+    margin: 70px 0 0 30px;  - расположение
+    font-size:22px; - размер шрифта
+}
+
+.logo-wrapper{
+    text-align: center;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+.main-wrapper {
+    height: 100%;
+    text-align: center;
+    margin: 0 auto;
+    width: 1080px;
+    background-color: #1f1f1f;
+    border-style: ridge;
+    border-color: #3c4c40;
+    border-width: 2px;
+}
+
+.info-panel{
+    font-size: 30px;
+    width: 1100px;
+    text-align: center;
+    margin: 0px auto;
+    background-color: #283328;
+    border-radius: 5px;
+    box-shadow: 0 7px 5px -5px rgba(0, 0, 0, 1);
+    background: linear-gradient(to top, #324532, #1f371f);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content {
+    font-size: 20px;
+    text-align: left;
+    padding: 10px 14px 20px 25px;
+}
+
+p {
+    text-align: center;
+    font-size: 30px;
+}
+
+.pics {
+    width: 100%;
+    text-align: center;
+    scroll-direction: horizontal;
+    display: inline-block;
+    overflow: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    margin-top: 20px;
+}
+
+.pics > img {
+    width: 342px;
+    height: 250px;
+}
+
+.date {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.hi-pan {
+    width: 100%;
+    text-align: center;
+}
+
+.empty-bottom {
+    margin-bottom: 50px;
+}
+
+.page-sel {
+    margin-bottom: 20px;
+}
+
+.page-sel-hint {
+    font-size: 75%;
+    margin-bottom: 20px;
+}
+
+.page-switch {
+    margin-bottom: 20px;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited  {
+    color: white;
+}

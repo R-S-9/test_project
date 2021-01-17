@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+{% load static %}
+{% csrf_token %}
+
+<html lang="en">
+
+   <head>
+      <meta charset="utf-8" />
+      <title>{% block title %} Breaking news {% endblock %}</title>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+   </head>
+
+   <body>
+      <div class="header">
+         <h1>Новости</h1>
+      </div>
+
+      <div class="logo-wrapper">
+         <img src="{% static 'imgs/news-icon_34387.png' %}" width='150' height='150'>
+      </div>
+
+      <div class="info-panel">
+         <span class="hi-pan">Добро пожаловать в Breaking news!</span>
+      </div>
+
+      <div class="main-wrapper">
+         {% for item in news %}
+
+            <div class="content">
+               <b>
+                  <p>{{ item.title }}</p><br>
+                  {{ item.content }}<br>
+
+                  {% if item.image_set.exists %}
+                     <div class="pics">
+
+                        {% for pic in item.image_set.all %}
+                           <img src="{{ pic.img.url }}">
+                        {% endfor %}
+
+                     </div>
+                  {% endif %}
+
+                  <div class="date">
+                     {{ item.date }}
+                  </div>
+               </b>
+            </div>
+            <hr size=0px width=auto align="left"><br>
+         {% endfor %}
+         <form method="get" class="page-sel">
+            <p>
+                <label for="page" class="page-sel-hint">страница</label>
+                <select id="page" name="page">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            </p>
+        </form>
+         <div class="page-switch">
+            <a href="#">Пред</a>
+            <a href="#">След</a>
+         </div>
+      </div>
+      <div class="empty-bottom">
+      </div>
+   </body>
+</html>
