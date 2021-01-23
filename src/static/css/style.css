@@ -33,7 +33,6 @@ h1{
 }
 
 .logo-wrapper{
-    text-align: center;
     padding-bottom: 40px;
     padding-top: 40px;
 }
@@ -52,7 +51,6 @@ h1{
 .info-panel{
     font-size: 30px;
     width: 1100px;
-    text-align: center;
     margin: 0px auto;
     background-color: #283328;
     border-radius: 5px;
@@ -63,6 +61,7 @@ h1{
     padding-left: 15px;
     display: flex;
     justify-content: space-between;
+    text-align: center;
 }
 
 .content {
@@ -100,6 +99,7 @@ p {
 .hi-pan {
     width: 100%;
     text-align: center;
+    color: #ffee00;
 }
 
 .empty-bottom {
@@ -125,4 +125,33 @@ a:link {
 
 a:visited  {
     color: white;
+}
+
+.form-title-content {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+.create {
+    margin-right: 5px;
+}
+
+.admin {
+    text-align: left;
+    margin-right: 5px;
+}
+
+.img-field {
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 32px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.btn-create {
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
 }

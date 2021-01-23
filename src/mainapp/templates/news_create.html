@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+<html lang="en">
+    <head>
+        {% block title %}Создание новости{% endblock %}
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        {% block content %}
+            <form id="post_form" action="{% url 'news_create_url' %}" method="POST" enctype="multipart/form-data">
+                {{ formset.as_p }}
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-title-content">
+
+                        {% if field.errors %}
+                            <div class="danger">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                        {{ field.label }}
+                        <div>
+                            {{ field }}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% with ''|center:5 as range %}
+                    {% for _ in range %}
+                        <div class="img-field">{{ img }}</div>
+                    {% endfor %}
+                {% endwith %}
+                <p>
+                    <button type="submit" class="btn-create">Создать</button>
+                </p>
+
+            </form>
+        {% endblock %}
+    </body>
+</html>

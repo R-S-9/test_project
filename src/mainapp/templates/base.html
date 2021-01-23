@@ -9,39 +9,42 @@
       <meta charset="utf-8" />
       <title>{% block title %} Breaking news {% endblock %}</title>
       <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+      <script src="{% static 'js/base.js' %}"></script>
    </head>
-
+{% block content %}
    <body>
       <div class="header">
          <h1>Новости</h1>
       </div>
 
-      <div class="logo-wrapper">
-         <img src="{% static 'imgs/news-icon_34387.png' %}" width='150' height='150'>
-      </div>
-
+      <div class="logo-wrapper"></div>
       <div class="info-panel">
-         <span class="hi-pan">Добро пожаловать в Breaking news!</span>
+         {% if user.is_superuser %}
+            <input class="admin" type="button" value="Панель" onclick="window.location.href = 'http://127.0.0.1:8000/admin/';">
+            <span class="hi-pan">Режим администратора</span>
+            <input class="create" type="button" value="Создать" onclick="window.location.href = 'http://127.0.0.1:8000/create/';">
+         {% endif %}
+         {% if not user.is_superuser %}
+            <input class="admin" type="button" value="Вход" onclick="window.location.href = 'http://127.0.0.1:8000/admin/';">
+            <span class="hi-pan">Добро пожаловать в Breaking news!</span>
+         {% endif %}
       </div>
 
       <div class="main-wrapper">
-         {% for item in news %}
-
+         {% for item in page %}
             <div class="content">
                <b>
                   <p>{{ item.title }}</p><br>
                   {{ item.content }}<br>
-
                   {% if item.image_set.exists %}
                      <div class="pics">
-
                         {% for pic in item.image_set.all %}
                            <img src="{{ pic.img.url }}">
                         {% endfor %}
-
                      </div>
                   {% endif %}
-
                   <div class="date">
                      {{ item.date }}
                   </div>
@@ -49,22 +52,29 @@
             </div>
             <hr size=0px width=auto align="left"><br>
          {% endfor %}
-         <form method="get" class="page-sel">
+         <form method="post" class="page-sel">
             <p>
-                <label for="page" class="page-sel-hint">страница</label>
-                <select id="page" name="page">
+                <label for="page-select" class="page-sel-hint">число новостей</label>
+                <select id="page-select" name="page_num" onchange="setItemsOnPage(this);">
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="50">50</option>
                 </select>
             </p>
-        </form>
+         </form>
          <div class="page-switch">
-            <a href="#">Пред</a>
-            <a href="#">След</a>
+            Страница {{ page.number }} из {{ page.paginator.num_pages }}
+            <br>
+            {% if page.has_previous %}
+               <a href="?page={{ page.previous_page_number }}">Пред</a>
+            {% endif %}
+            {% if page.has_next %}
+               <a href="?page={{ page.next_page_number }}">След</a>
+            {% endif %}
          </div>
       </div>
       <div class="empty-bottom">
       </div>
    </body>
+{% endblock %}
 </html>

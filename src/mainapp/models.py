@@ -25,7 +25,7 @@ class Image(models.Model):
 	news = models.ForeignKey(News, verbose_name='Новость', on_delete=models.CASCADE)
 	order = models.IntegerField(verbose_name='Порядковый номер')
 
-	def save(self, *args, **kwargs):
+	def _set_order(self):
 		last_order = self.__class__.objects.filter(
 			news=self.news
 		).order_by('order').values_list(
@@ -37,6 +37,8 @@ class Image(models.Model):
 		else:
 			self.order = 1
 
+	def save(self, *args, **kwargs):
+		self._set_order()
 		super(Image, self).save(*args, **kwargs)
 
 	def __str__(self):

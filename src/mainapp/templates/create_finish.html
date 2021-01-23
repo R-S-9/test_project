@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+<html lang="en">
+    <head>
+        {% block title %}Новость создана{% endblock %}
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        {% block content %}
+        <div class="form-title-content">
+            Новость успешно создана
+
+            <p>
+                {% csrf_token %}
+                <button type="button" style = "width=40px; height=40px;" onclick="window.location.href = 'http://127.0.0.1:8000';">Выйти</button>
+            </p>
+        </div>
+        {% endblock %}
+    </body>
+</html>
